@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://b6beay3esf2m8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p5dei"]
+size = Vector3(60, 2, 60)
+
+[sub_resource type="BoxMesh" id="BoxMesh_p5dei"]
+size = Vector3(60, 2, 60)
+
+[node name="StaticBody3D" type="StaticBody3D" unique_id=2081772170]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1723233539]
+shape = SubResource("BoxShape3D_p5dei")
+debug_color = Color(0.7490196, 0.21176471, 0.99607843, 1)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=590564132]
+mesh = SubResource("BoxMesh_p5dei")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=465762229]
+transform = Transform3D(-0.87121385, -0.3471213, 0.3471213, 0, 0.70710677, 0.70710677, -0.49090368, 0.6160412, -0.6160412, 0, 17.585, 0)

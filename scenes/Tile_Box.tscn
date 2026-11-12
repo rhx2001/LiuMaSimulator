@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://dfabq1v8uky5q"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_p5dei"]
+size = Vector3(5, 0.2, 5)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_x82sp"]
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+use_rotation_3d = true
+rotation_3d_min = Vector3(0, 0, 0)
+rotation_3d_max = Vector3(0, 0, 0)
+direction = Vector3(1, -0.865, 0)
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 0.0
+collision_use_scale = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_20a2t"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_p5dei"]
+material = SubResource("ShaderMaterial_20a2t")
+size = Vector2(0.1, 0.305)
+
+[node name="TileBox" type="Node3D" unique_id=1966772496]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1250046828]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2743882, 1.2231998)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=978378919]
+transform = Transform3D(1, 0, 0, 0, -0.5462417, 0.83762765, 0, -0.83762765, -0.5462417, 0, 0.0108709335, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=319472176]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+mesh = SubResource("BoxMesh_p5dei")
+
+[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="MeshInstance3D" unique_id=1944802342]
+size = Vector3(5, 0.2, 5)
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=1506195657]
+visibility_aabb = AABB(-2.5, -0.2, -2.5, 5, 1.61, 5)
+process_material = SubResource("ParticleProcessMaterial_x82sp")
+draw_pass_1 = SubResource("QuadMesh_p5dei")
