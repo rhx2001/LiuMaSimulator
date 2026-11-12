@@ -1,0 +1,9 @@
+# Godot 4+ specific ignores
+.godot/
+/android/
+
+# 导出凭据（签名密钥信息，别进仓库）
+export_credentials.cfg
+
+# agent 辅助脚本（DeepSeek Harness 工作区，本机专用）
+.dsh/
