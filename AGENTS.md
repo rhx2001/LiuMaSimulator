@@ -1,4 +1,4 @@
-# FlowMahjong — Agent 工作约定
+# liumasimulator — Agent 工作约定
 
 > 这是一个 Godot 4.x 的 PC 端流麻视觉/物理原型，同时也是我学习 Godot 的练习项目。请始终以仓库中的实际工程和当前文档为准。
 
@@ -40,7 +40,7 @@
 
 ## 项目现状
 
-- 项目名：`新建游戏项目`（`project.godot` 的 `config/name`，也决定 `user://` 目录名）
+- 项目名：`liumasimulator`（`project.godot` 的 `config/name`，也决定 `user://` 目录名）。2026-11-12 从「新建游戏项目」改名，**重启编辑器后** `user://` 才会切到 `%APPDATA%\Godot\app_userdata\liumasimulator`
 - 已装插件：`addons/godot_mcp_toolkit` v1.1.2 —— 在编辑器进程内起了一个 WebSocket MCP 服务
 - 目前**没有主场景**；`scenes/`、`scripts/` 目录已建但为空；`application/run/main_scene` 为空
 - 只要编辑器开着插件启用，MCP 服务就在跑；编辑器关闭则完全不可用

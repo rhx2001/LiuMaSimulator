@@ -1,9 +1,9 @@
-# FlowMahjong
+# liumasimulator
 
 一个以 **Godot 4.x** 开发的 PC 流麻（透明流沙/亮片）模拟实验，同时用于逐步学习 Godot 的场景、粒子、材质和渲染系统。
 
 > 仓库：[github.com/rhx2001/LiuMaSimulator](https://github.com/rhx2001/LiuMaSimulator)（Private）
-> 本机环境：Godot 4.7.2 · mobile 渲染后端 · Windows / D3D12
+> 本机环境：Godot 4.7.2 · mobile 渲染后端 · Windows / D3D12（PC 只做功能验证，最终目标是移动端）
 
 ## 当前阶段
 

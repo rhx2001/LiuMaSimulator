@@ -1,4 +1,4 @@
-# FlowMahjong — 当前计划（Godot）
+# liumasimulator — 当前计划（Godot）
 
 **状态：** 起步 / PC 原型。此文件是当前唯一的阶段目标来源；有实测结果后随时修改。
 
@@ -9,7 +9,18 @@
 - MCP 插件 `godot_mcp_toolkit` v1.1.2 在跑，编辑器侧检查可用（`scene.get_tree` 现在返回 `NO_SCENE`，符合"没有打开场景"）。
 - Git 仓库 `git@github.com:rhx2001/LiuMaSimulator.git`，分支 `main`。
 
-> ⚠️ 需要拍板的取舍：`project.godot` 现在是 **mobile 渲染后端**，而本计划写的是 PC 原型。mobile 是功能子集（例如没有 SDFGI、体积雾），做 2D 粒子和简单高光够用；但如果后面要玻璃折射、多光源，Forward+ 更合适。切换要重启编辑器，效果和性能都会变，所以先不动。
+### 渲染后端：定在 mobile
+
+PC 只是**功能验证环境**，最终目标是移动端，所以从一开始就用 mobile 跑，避免"PC 上好好的、一上手机全变样"。这条已经定了，不再为了 PC 画质切 Forward+。
+
+代价是接受一组能力边界（Godot 4.x 官方文档）：
+
+- **能用**：RenderingDevice、CompositorEffect 自定义后处理、compute shader（有性能警告）、2D HDR 视口、MSAA 2D、粒子拖尾 / SDF 碰撞、粒子尾迹。
+- **用不了**：SDFGI、VoxelGI、SSAO、SSR、体积雾、TAA、FSR2、次表面散射、contact shadows。
+
+这些缺失**几乎都是 3D 特性**；本项目是 2D/2.5D，真正会撞上的只有以后可能做的"玻璃折射 / 环境光遮蔽"。
+
+后期确实需要扩能力时的顺序：先用 `CompositorEffect` + RenderingDevice 在项目层解决 → 再不行用 GDExtension 写 C++（不改引擎） → 最后才是 fork 引擎改 mobile 后端。fork 之后要自建导出模板，并且每次升级 Godot 都得 rebase。
 
 ## 一句话目标
 
@@ -17,8 +28,8 @@
 
 ## 当前取舍
 
-- **引擎：** Godot 4.x；实际小版本、渲染器与运行环境由本地 Agent 在项目中确认，不预设具体版本。
-- **平台：** 首先 PC，2D 或 2.5D；未来可能支持移动端，但现在不引入相关依赖。
+- **引擎：** Godot 4.7.2（本机实测）；渲染器 mobile。
+- **平台：** 先在 PC 上验证（PC 只作验证环境），最终目标是移动端；因此渲染后端固定为 mobile，不为了 PC 上的画质切 Forward+。
 - **控制：** PC 键盘/鼠标修改重力和实验参数，优先使用 GDScript。
 - **模拟：** 首先用 GPUParticles2D、ParticleProcessMaterial 或 Particle Shader 验证运动；如遇无法表达的约束，再评估自定义模拟。
 - **流麻油：** 初期是等效阻尼、重力比例与外观材质，不宣称真实流体动力学。
