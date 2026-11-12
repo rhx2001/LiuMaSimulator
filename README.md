@@ -1,37 +1,25 @@
 # FlowMahjong
 
-用 Godot 复刻「流麻」——麻将牌里悬浮着缓慢流动的闪粉。
+一个以 **Godot 4.x** 开发的 PC 流麻（透明流沙/亮片）模拟实验，同时用于逐步学习 Godot 的场景、粒子、材质和渲染系统。
 
-> 当前处于原型阶段：还没有主场景，正在验证粒子方案。
+> 仓库：[github.com/rhx2001/LiuMaSimulator](https://github.com/rhx2001/LiuMaSimulator)（Private）
+> 本机环境：Godot 4.7.2 · mobile 渲染后端 · Windows / D3D12
 
-## 环境
+## 当前阶段
 
-- Godot **4.7.2**（mobile 渲染后端，Windows 下走 D3D12）
-- 插件 `addons/godot_mcp_toolkit` v1.1.2：在编辑器进程内开一个 WebSocket MCP 服务，Agent 靠它读写真实工程
+首个里程碑不是“真实流体”，而是：在一个二维容器中看见粒子运动，能够改变重力方向和等效阻尼，并解释每个行为来自哪里。
 
-## 运行
+- 当前设计与验收标准：[`docs/PROJECT.md`](docs/PROJECT.md)
+- 实验与学习记录：[`docs/EXPERIMENTS.md`](docs/EXPERIMENTS.md)
+- Agent 协作规则：[`AGENTS.md`](AGENTS.md)
+- 早期 UE / Niagara 草案：`docs/archive/`，**仅供参考，不是当前待办**
 
-1. 用 Godot 4.7.2 打开本目录的 `project.godot`
-2. 主场景还没设；按 [docs/PROJECT.md](docs/PROJECT.md) 里的实验逐个打开运行
+## 使用方式
 
-## 和 Agent 协作
+在包含 `project.godot` 的项目根目录打开 Godot。把本文档包的文件合并到同一目录（**不要覆盖已有文件**）；不要把整个包作为另一个嵌套 Godot 项目。
 
-先读 [AGENTS.md](AGENTS.md)——它既是协作约定，也是 MCP 通道的技术说明。
-每次新会话，让 Agent 先读 `AGENTS.md`、`README.md`、`docs/PROJECT.md`、`docs/EXPERIMENTS.md`。
+开始前，确认本机 Godot 具体版本、当前渲染器和已有项目资源。初期没有必须安装的第三方依赖。
 
-## 文档
+## 记笔记约定
 
-| 文件 | 用途 | 更新时机 |
-|---|---|---|
-| [docs/PROJECT.md](docs/PROJECT.md) | 当前目标、技术选择、里程碑 | 阶段变化时 |
-| [docs/EXPERIMENTS.md](docs/EXPERIMENTS.md) | 被推翻的判断、可复用的发现 | 有价值时才写 |
-| [docs/archive/](docs/archive/) | 废弃方案（UE / Niagara） | 归档时 |
-
-## 目录
-
-```
-scenes/   场景
-scripts/  GDScript
-addons/   第三方插件
-docs/     项目文档
-```
+只有在一个现象让我们修正判断、解决了真实错误或得到可复用经验时，才向 `docs/EXPERIMENTS.md` 补一条 3～5 行记录。代码、场景文件和 Git commit 本身也是文档，不抄长篇教程。

@@ -1,9 +1,30 @@
-# Godot 4+ specific ignores
+# Godot 4.1+
 .godot/
-/android/
+*.translation
 
-# 导出凭据（签名密钥信息，别进仓库）
+# Build/export outputs (adjust to your own export directory)
+/build/
+/dist/
+*.apk
+*.aab
+*.pck
+
+# Local tools and editor state
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Secrets / local MCP settings; share sanitized examples if needed
+.env
+.env.*
+!.env.example
+.mcp.json
+.mcp.local.json
+.claude/settings.local.json
+
+# Godot 导出凭据（签名密钥信息）
 export_credentials.cfg
 
-# agent 辅助脚本（DeepSeek Harness 工作区，本机专用）
+# Agent 辅助脚本（本机专用）
 .dsh/
