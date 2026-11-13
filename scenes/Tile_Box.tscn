@@ -4,12 +4,17 @@
 size = Vector3(5, 0.2, 5)
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_x82sp"]
+emission_shape_offset = Vector3(0, 1.27, 0)
 emission_shape = 3
-emission_box_extents = Vector3(1, 1, 1)
+emission_box_extents = Vector3(1.125, 1.39, 0.4)
+angle_min = -720.0
+angle_max = 720.0
 use_rotation_3d = true
-rotation_3d_min = Vector3(0, 0, 0)
-rotation_3d_max = Vector3(0, 0, 0)
-direction = Vector3(1, -0.865, 0)
+rotation_3d_min = Vector3(-2.35, -1.315, -4.215)
+rotation_3d_max = Vector3(2.085, 2.3, 4.3)
+direction = Vector3(0, -1, 0)
+spread = 0.0
+scale_min = 0.099999994
 collision_mode = 1
 collision_friction = 0.0
 collision_bounce = 0.0
